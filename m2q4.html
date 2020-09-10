@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<meta charset ="UTF-8">
+		<title> Curso Javascript</title>
+	</head>
+	<body>
+		<div id = "app">
+			<div class = 'box'></div>
+			<button id = "new" >Criar</button>	
+		</div>
+		<ul>
+		</ul>
+		<input type="text" id="nome">
+		<button onClick="adicionar()">Adicionar</button>		
+		<script>
+			var nomes = ["Diego", "Gabriel", "Lucas"];
+			function getRandomColor() {
+			var letters = "0123456789ABCDEF";
+			var color = "#";
+			for (var i = 0; i < 6; i++) {
+			color += letters[Math.floor(Math.random() * 16)];
+			}
+			return color;
+			}
+			var newColor = getRandomColor(); 
+			var boxElement = document.getElementById("new");
+			var test = document.getElementById("app");
+			boxElement.onclick = function () {
+				var creation = document.createElement("div");
+				creation.style.width = 100;
+				creation.style.height = 100;
+				creation.style.backgroundColor = '#f00';
+				creation.onmouseover = function () {
+					creation.style.backgroundColor = getRandomColor();
+				}
+				test.appendChild(creation);
+			}
+			var names = [
+				"DANIEL OBARA",
+				"DIEGO FERNANDES",
+				"CUBO MÁGICO",
+				"CAHFEH ZHOTTYS"
+      		];
+			var elementoLista = document.querySelector("ul");
+			var inputNewName = document.getElementById("nome");
+			for (name of names) {
+				adicionaItem(name);
+			}
+			function adicionaItem(name) {
+				var elementoFilho = document.createElement("li");
+				var textoDoFilho = document.createTextNode(name);
+				elementoFilho.appendChild(textoDoFilho);
+				elementoLista.appendChild(elementoFilho);
+				}
+			function adicionar() {
+				adicionaItem(inputNewName.value);
+				inputNewName.value = "";
+			}
+		</script>
+	</body>
+</html>
